@@ -59,7 +59,7 @@ const makeHtmlBoard = () => {
     }
 }
 
-function onHover(e) {
+const onHover = e => {
     if (currPlayer == 1) {
         e.target.style.backgroundColor = 'red';
     } else {
@@ -69,7 +69,7 @@ function onHover(e) {
 
 
 /** findSpotForCol: given column x, return top empty y (null if filled) */
-function findSpotForCol(x) {
+const findSpotForCol = x => {
     for (let i = 0; i < HEIGHT; i++) {
         if (board[i][x] != null) {
             if (i == 0) {
@@ -84,7 +84,7 @@ function findSpotForCol(x) {
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 // Inserts a div into the correct table cell to create a player piece
-function placeInTable(y, x) {
+const placeInTable = (y, x) => {
     const spot = document.getElementById(`${y}-${x}`);
     spot.innerHTML = `<div></div>`;
     spot.firstChild.classList.add(`piece`, `p${currPlayer}`);
@@ -92,13 +92,13 @@ function placeInTable(y, x) {
 
 /** endGame: announce game end */
 
-function endGame(msg) {
+const endGame = msg => {
     setTimeout(() => alert(msg), 250);
 }
 
 /** handleClick: handle click of column top to play piece */
 
-function handleClick(evt) {
+const handleClick = evt => {
     // get x from ID of clicked cell
     const x = +evt.target.id;
 
@@ -144,8 +144,8 @@ function handleClick(evt) {
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
-function checkForWin(evt) {
-    function _win(cells) {
+const checkForWin = evt => {
+    const _win = cells => {
         // Check four cells to see if they're all color of current player
         //  - cells: list of four (y, x) cells
         //  - returns true if all are legal coordinates & all match currPlayer

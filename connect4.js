@@ -7,12 +7,15 @@
 
 // Declare global constants
 const body = document.querySelector('body');
+const gameTitle = document.querySelector('h1');
+const form = document.getElementById('form');
+const p1ColSel = document.getElementById('player1');
+const p2ColSel = document.getElementById('player2');
 const board = []; // array of rows, each row is array of cells  (board[y][x])
 const gameBoard = document.getElementById('game');
 const htmlBoardTop = document.getElementById('board-top');
 const htmlBoard = document.getElementById('board');
 const htmlBoardFeet = document.getElementById('board-feet');
-const gameTitle = document.querySelector('h1');
 
 // Board Size initialization
 let WIDTH;
@@ -45,13 +48,7 @@ const colorTitle = () => {
     }
 };
 
-
-const form = document.getElementById('form');
-
-const p1ColSel = document.getElementById('player1');
-const p2ColSel = document.getElementById('player2');
-const heightSel = document.getElementById('boardHeight');
-const widthSel = document.getElementById('boardWidth');
+// Change game title colors when player uses select dropdowns
 p1ColSel.onchange = () => {
     pColor1 = `${p1ColSel.value}`;
     switchP();
@@ -64,8 +61,12 @@ p2ColSel.onchange = () => {
     switchP();
     colorTitle();
 }
+
+// Logic for new game form submission and game launch
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    const heightSel = document.getElementById('boardHeight');
+    const widthSel = document.getElementById('boardWidth');
     if (p1ColSel.value == p2ColSel.value) {
         alert('Please select two different player colors.')
     } else {
@@ -86,12 +87,8 @@ form.addEventListener("submit", function(e) {
             colorTitle();
             makeHtmlBoard();
         }, 500);
-
-
     }
 })
-
-
 
 // Create a backend JS board (array) to check for win conditions
 const makeBoard = arr => {
@@ -114,7 +111,6 @@ const makeHtmlBoard = () => {
     // Removes any previous board contents
     clearBoard(htmlBoardTop);
     clearBoard(htmlBoard);
-
     // Adds a table row on top for the players to drop their pieces in
     // and triggers the handleClick function when clicked.
     var top = document.createElement("tr");
@@ -140,7 +136,8 @@ const makeHtmlBoard = () => {
         }
         htmlBoard.append(row);
     }
-    // Adds feet to board - disabled due to margin problem.
+
+    // Add feet to board - disabled due to margin problem but saved for posterity
     // for (i = 0; i < 2; i++) {
     //     let aFoot = document.createElement('div');
     //     aFoot.className = 'foot';
@@ -163,10 +160,11 @@ const makeHtmlBoard = () => {
     // while (htmlBoardFeet.children.length > 2) {
     //     htmlBoardFeet.firstChild.remove();
     // }
+
+    // Adjust board feet spacing
     const feet = document.getElementById('board-feet').children;
     feet[0].style.marginRight = '30%';
     feet[1].style.marginLeft = '30%';
-
     setTimeout(() => {
         htmlBoardTop.style.opacity = '1';
         htmlBoard.style.opacity = '1';
@@ -174,12 +172,12 @@ const makeHtmlBoard = () => {
     }, 500);
 }; // end of makeHtmlBoard
 
-// Changes top row spot to player's color when hovered over
+// Change top row spot to player's color when hovered over
 const onHover = e => {
     e.target.style.backgroundColor = currColor;
 };
 
-// Locates the lowest empty space in column x
+// Locate the lowest empty space in column x
 const findSpotForCol = x => {
     for (let i = 0; i < HEIGHT; i++) {
         if (board[i][x] != null) {
@@ -192,7 +190,7 @@ const findSpotForCol = x => {
     return (HEIGHT - 1);
 }
 
-// Inserts a div into the correct table cell to create a player piece
+// Insert a div into the correct table cell to create a player piece
 const placeInTable = (y, x) => {
     const spot = document.getElementById(`${y}-${x}`);
     spot.innerHTML = `<div></div>`;
@@ -200,7 +198,7 @@ const placeInTable = (y, x) => {
     spot.firstChild.classList.add('piece');
 };
 
-// Changes the active player
+// Change the active player
 const switchP = () => {
     if (currPlayer == 1) {
         currPlayer = 2;
@@ -211,7 +209,7 @@ const switchP = () => {
     }
 };
 
-// Resets board and variables for a new game
+// Reset variables in preperation for a new game and adjusts visibiity of elements
 const resetGame = () => {
     const newGameButton = document.getElementById('endgame-button');
     setTimeout(() => {
@@ -261,7 +259,7 @@ const handleClick = evt => {
         return endGame(`Player ${currPlayer} won in ${Math.round(((WIDTH*HEIGHT) - turnCounter + 1)/2)} turns!`);
     }
     // Check for tie game
-    if (turnCounter == 1 && checkForWin == false) {
+    else if (turnCounter == 1) {
         currColor = '#666';
         evt.target.style.backgroundColor = ''; // Remove current player color from last hovered cell
         return endGame('You both lose!');

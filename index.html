@@ -1,15 +1,138 @@
 <!doctype html>
+
 <head>
-  <title>Connect 4</title>
-  <link href="connect4.css" rel="stylesheet">
+    <title>Connect 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500&family=Indie+Flower&family=Lato&family=Righteous&display=swap" rel="stylesheet">
+    <link href="connect4.css" rel="stylesheet">
 </head>
+
 <body>
+    <div id="content">
 
-<div id="game">
-  <table id="board"></table>
-</div>
+        <div id="endgame-overlay"></div>
+        <button id="endgame-button"></button>
 
-<script src="connect4.js"></script>
+        <h1>
+            <span>C</span>
+            <span>o</span>
+            <span>n</span>
+            <span>n</span>
+            <span>e</span>
+            <span>c</span>
+            <span>t</span>
+            <span>&nbsp;4</span>
+        </h1>
+
+        <div id="form">
+            <form>
+                <table id="formTable">
+                    <tr>
+                        <td>
+                            <label for="player1">Player 1 Color:</label>
+                        </td>
+                        <td>
+                            <select name="player1" id="player1">
+                              <option value="red" selected>Red</option>
+                              <option value="orange">Orange</option>
+                              <option value="yellow">Yellow</option>
+                              <option value="green">Green</option>
+                              <option value="blue">Blue</option>
+                              <option value="indigo">Indigo</option>
+                              <option value="violet">Violet</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="player2">Player 2 Color:</label>
+                        </td>
+                        <td>
+                            <select name="player2" id="player2">
+                              <option value="red">Red</option>
+                              <option value="orange">Orange</option>
+                              <option value="yellow">Yellow</option>
+                              <option value="green">Green</option>
+                              <option value="blue" selected>Blue</option>
+                              <option value="indigo">Indigo</option>
+                              <option value="violet">Violet</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="boardHeight">Num of Rows:</label>
+                            <br>
+                        </td>
+                        <td>
+                            <select name="boardHeight" id="boardHeight">
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6" selected>6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                           </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="boardWidth">Num of Cols:</label>
+                        </td>
+                        <td>
+                            <select name="boardWidth" id="boardWidth">
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7" selected>7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                </table>
+
+                <button id="formButton">Begin</button>
+            </form>
+        </div>
+
+        <table id="game">
+            <tr>
+                <td>
+                    <table id="board-top"></table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="board"></table>
+                    <div id="board-feet">
+                        <div class="foot">
+                            <div class="top-foot"></div>
+                            <div class="bottom-foot">
+                                <div class="left-foot"></div>
+                                <div class="right-foot"></div>
+                            </div>
+                        </div>
+                        <div class="foot">
+                            <div class="top-foot"></div>
+                            <div class="bottom-foot">
+                                <div class="left-foot"></div>
+                                <div class="right-foot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+    </div>
+
+    <script src="connect4.js"></script>
 
 </body>
+
 </html>

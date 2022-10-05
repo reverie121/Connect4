@@ -1,44 +1,198 @@
 /* game board table */
 
-#board {
+body {
+    background-color: beige;
+    text-align: center;
+    transition: background-color 1s;
+}
+
+h1 {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 5rem;
+    margin: 0.5rem auto;
+    color: beige;
+    transition: color 1s;
+    text-shadow: -2px -2px 0 rgb(170, 170, 0), 2px -2px 0 rgb(170, 170, 0), -2px 2px 0 rgb(170, 170, 0), 2px 2px 0 rgb(170, 170, 0);
+    transition: opacity 0.5s;
+    z-index: 10;
+}
+
+h1 span {
+    transition: color 0.4s;
+}
+
+label {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 1.5rem;
+}
+
+select {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 1rem;
+    border-radius: 10%;
+    height: 1.5rem;
+    background-color: rgb(170, 170, 0);
+}
+
+#form {
+    width: 16rem;
+    border: 2px solid rgb(170, 170, 0);
+    border-radius: 10%;
+    margin: 2rem auto;
+    padding: 2rem;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#formButton {
+    margin-top: 1rem;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 1.5rem;
+    background-color: rgb(170, 170, 0);
+    border-radius: 10%;
+}
+
+#formTable {
     margin: auto;
 }
 
+#game {
+    display: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#game>* {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+#board-top {
+    margin: auto;
+    border-spacing: 0.4rem;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#board-top td {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: beige;
+    padding: 0;
+    border: dashed 1px rgb(170, 170, 0);
+}
+
+#board {
+    margin: auto;
+    background-color: rgb(170, 170, 0);
+    border: 1px solid #666;
+    border-radius: 5%;
+    border-spacing: 0.4rem;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
 #board td {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
     border: solid 1px #666;
+    border-radius: 50%;
+    background-color: beige;
+    transition: background-color 2s;
+    padding: 0;
+}
+
+#board-feet {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    border: 0;
+}
+
+.foot {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.top-foot {
+    background-color: rgb(170, 170, 0);
+    border: 0;
+    border-left: 1px solid #666;
+    border-right: 1px solid #666;
+    width: 2.12rem;
+    height: 0.2rem;
+    margin: 0 auto;
+}
+
+.bottom-foot {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.left-foot {
+    background-color: rgb(170, 170, 0);
+    border: 1px solid #666;
+    border-top: 0;
+    height: 2rem;
+    width: 1rem;
+    transform: skewX(-40deg);
+    transform-origin: top right;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    margin-right: -0.15rem;
+}
+
+.right-foot {
+    background-color: rgb(170, 170, 0);
+    border: 1px solid #666;
+    border-top: 0;
+    height: 2rem;
+    width: 1rem;
+    transform: skewX(40deg);
+    transform-origin: top left;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    margin-left: -0.15rem;
 }
 
 
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
-    margin: 5px;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 
-.p1 {
-    background-color: red;
+#endgame-overlay {
+    display: block;
+    opacity: 0;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9;
 }
 
-.p2 {
-    background-color: blue;
+#endgame-button {
+    display: none;
+    position: fixed;
+    background: beige;
+    border: rgb(170, 170, 0) solid 1px;
+    border-radius: 10px;
+    width: 400px;
+    z-index: 10;
+    padding: 1.5rem 0;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 2rem;
+    transition: opacity 1.5s;
 }
-
-
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
-
-
-/* column-top is table row of clickable areas for each column */
-
-#column-top td {
-    border: dashed 1px lightgray;
-}
-
-
-/* #column-top td:hover {
-    background-color: gold;
-} */

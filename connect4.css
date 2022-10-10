@@ -40,7 +40,6 @@ select {
     border-radius: 10%;
     margin: 2rem auto;
     padding: 2rem;
-    opacity: 1;
     transition: opacity 1s;
 }
 
@@ -60,6 +59,8 @@ select {
     display: none;
     margin: 0 auto;
     padding: 0;
+    opacity: 0;
+    transition: opacity 1s;
 }
 
 #game>* {
@@ -74,8 +75,7 @@ select {
 #board-top {
     margin: auto;
     border-spacing: 0.4rem;
-    opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 0.75s;
 }
 
 #board-top td {
@@ -93,7 +93,6 @@ select {
     border: 1px solid #666;
     border-radius: 5%;
     border-spacing: 0.4rem;
-    opacity: 0;
     transition: opacity 1s;
 }
 
@@ -110,7 +109,6 @@ select {
 #board-feet {
     margin: 0;
     padding: 0;
-    opacity: 0;
     transition: opacity 1s;
     border: 0;
 }
@@ -194,5 +192,6 @@ select {
     padding: 1.5rem 0;
     font-family: 'Gemunu Libre', sans-serif;
     font-size: 2rem;
-    transition: opacity 1.5s;
+    opacity: 0;
+    transition: opacity 1s;
 }
